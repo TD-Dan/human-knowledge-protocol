@@ -7,6 +7,8 @@ Current world has a an overload of information. Traditional media and social med
 ## From raw information to reasonable facts
 All observations inherently include the viewpoint of the observer. This is the case even if its impact is deliberately minimized. In order to evaluate raw information, the object and the subject have to be separated. Later on as information is retrieved, the information retrieving entity constructs information from its own viewpoint. For this purpose the raw information is separeted into statement records and author records. A statement record contains the actual information as observed by the author, reasoning behind the fact and some additional information that is adressed later in this document. An author record is very similar to a statement record; difference is that it defines an entity that is responsible for its own actions in the database. In addition to these, vote records are issued by authors to tell their opinions on any other records.
 
+![alt text](https://github.com/kupoli/hkp/blob/master/rough%20ideas/fact.png?raw=true "fact sheet")
+
 Rules
 ### Record
 1.	A record is a database entry that can not be modified or erased.
