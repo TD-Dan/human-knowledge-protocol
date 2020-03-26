@@ -2,6 +2,8 @@
 
 Current world has a an overload of information. Traditional media and social media generate news and information on a rate that nobody is able to process in terms of fact checking and accounting for inherent biases by authors. False news and distortion of facts happens on purpose or by accident and generate huge problems. Universal knowledge protocol aims to generate curated facts by using voting mechanisms and credibility scores. An implementation of this protocol is intended by leveraging decentralised and immutable IOTA ledger. Building on top of IOTA allows for using existing research, such as UIP (Unified Identity Protocol) and MAM (Masked Authenticated Messaging) streams.
 
+![alt text](https://github.com/kupoli/hkp/blob/master/rough%20ideas/ui%20searchpage.png?raw=true "search ui")
+
 ## From raw information to reasonable facts
 All observations inherently include the viewpoint of the observer. This is the case even if its impact is deliberately minimized. In order to evaluate raw information, the object and the subject have to be separated. Later on as information is retrieved, the information retrieving entity constructs information from its own viewpoint. For this purpose the raw information is separeted into statement records and author records. A statement record contains the actual information as observed by the author, reasoning behind the fact and some additional information that is adressed later in this document. An author record is very similar to a statement record; difference is that it defines an entity that is responsible for its own actions in the database. In addition to these, vote records are issued by authors to tell their opinions on any other records.
 
