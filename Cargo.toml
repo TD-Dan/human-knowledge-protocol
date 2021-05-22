@@ -1,5 +1,5 @@
 [package]
-name = "hkp"
+name = "human-knowledge-protocol"
 version = "0.1.0"
 authors = ["Daniel Herkert <daniel.herkert@gmail.com>"]
 edition = "2018"
