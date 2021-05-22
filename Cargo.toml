@@ -8,4 +8,5 @@ edition = "2018"
 
 [dependencies]
 iota-client = { git = "https://github.com/iotaledger/iota.rs", branch = "dev" }
+tokio = { version = "1.5", features = ["full"] }
 identity = { git = "https://github.com/iotaledger/identity.rs", branch = "main"}
