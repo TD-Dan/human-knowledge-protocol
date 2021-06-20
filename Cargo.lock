@@ -1047,7 +1047,7 @@ dependencies = [
 [[package]]
 name = "identity"
 version = "0.3.0"
-source = "git+https://github.com/iotaledger/identity.rs?branch=main#cbb28b8005938f24f37440e3e88321ac77c729ac"
+source = "git+https://github.com/iotaledger/identity.rs?branch=dev#1d8592d9e4efcdd23b7669ca23ac3ea571a35c6a"
 dependencies = [
  "identity-comm",
  "identity-core",
@@ -1059,7 +1059,7 @@ dependencies = [
 [[package]]
 name = "identity-comm"
 version = "0.3.0"
-source = "git+https://github.com/iotaledger/identity.rs?branch=main#cbb28b8005938f24f37440e3e88321ac77c729ac"
+source = "git+https://github.com/iotaledger/identity.rs?branch=dev#1d8592d9e4efcdd23b7669ca23ac3ea571a35c6a"
 dependencies = [
  "identity-core",
  "identity-credential",
@@ -1076,7 +1076,7 @@ dependencies = [
 [[package]]
 name = "identity-core"
 version = "0.3.0"
-source = "git+https://github.com/iotaledger/identity.rs?branch=main#cbb28b8005938f24f37440e3e88321ac77c729ac"
+source = "git+https://github.com/iotaledger/identity.rs?branch=dev#1d8592d9e4efcdd23b7669ca23ac3ea571a35c6a"
 dependencies = [
  "base64",
  "bs58",
@@ -1098,7 +1098,7 @@ dependencies = [
 [[package]]
 name = "identity-credential"
 version = "0.3.0"
-source = "git+https://github.com/iotaledger/identity.rs?branch=main#cbb28b8005938f24f37440e3e88321ac77c729ac"
+source = "git+https://github.com/iotaledger/identity.rs?branch=dev#1d8592d9e4efcdd23b7669ca23ac3ea571a35c6a"
 dependencies = [
  "identity-core",
  "identity-did",
@@ -1110,7 +1110,7 @@ dependencies = [
 [[package]]
 name = "identity-derive"
 version = "0.3.0"
-source = "git+https://github.com/iotaledger/identity.rs?branch=main#cbb28b8005938f24f37440e3e88321ac77c729ac"
+source = "git+https://github.com/iotaledger/identity.rs?branch=dev#1d8592d9e4efcdd23b7669ca23ac3ea571a35c6a"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1121,7 +1121,7 @@ dependencies = [
 [[package]]
 name = "identity-did"
 version = "0.3.0"
-source = "git+https://github.com/iotaledger/identity.rs?branch=main#cbb28b8005938f24f37440e3e88321ac77c729ac"
+source = "git+https://github.com/iotaledger/identity.rs?branch=dev#1d8592d9e4efcdd23b7669ca23ac3ea571a35c6a"
 dependencies = [
  "async-trait",
  "did_url",
@@ -1133,7 +1133,7 @@ dependencies = [
 [[package]]
 name = "identity-diff"
 version = "0.3.0"
-source = "git+https://github.com/iotaledger/identity.rs?branch=main#cbb28b8005938f24f37440e3e88321ac77c729ac"
+source = "git+https://github.com/iotaledger/identity.rs?branch=dev#1d8592d9e4efcdd23b7669ca23ac3ea571a35c6a"
 dependencies = [
  "did_url",
  "identity-derive",
@@ -1145,9 +1145,10 @@ dependencies = [
 [[package]]
 name = "identity-iota"
 version = "0.3.0"
-source = "git+https://github.com/iotaledger/identity.rs?branch=main#cbb28b8005938f24f37440e3e88321ac77c729ac"
+source = "git+https://github.com/iotaledger/identity.rs?branch=dev#1d8592d9e4efcdd23b7669ca23ac3ea571a35c6a"
 dependencies = [
  "async-trait",
+ "form_urlencoded",
  "futures",
  "identity-core",
  "identity-credential",
@@ -1352,7 +1353,7 @@ checksum = "18794a8ad5b29321f790b55d93dfba91e125cb1a9edbd4f8e3150acc771c1a5e"
 [[package]]
 name = "libjose"
 version = "0.1.0"
-source = "git+https://github.com/iotaledger/identity.rs?branch=main#cbb28b8005938f24f37440e3e88321ac77c729ac"
+source = "git+https://github.com/iotaledger/identity.rs?branch=dev#1d8592d9e4efcdd23b7669ca23ac3ea571a35c6a"
 dependencies = [
  "base64",
  "curve25519-dalek",
