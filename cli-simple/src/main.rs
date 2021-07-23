@@ -5,21 +5,20 @@ use dialoguer::console::Term;
 
 struct MenuItem {
     name: String,
-    sub_menu: Option<Box<MenuItem>>,
 }
 
-struct Menu {
+struct Menu{
     menu_items: Vec<MenuItem>,
     has_back: Option<usize>,
     has_quit: Option<usize>,
-    execute: Option<fn(menu: &Menu, item : usize)>,
+    execute: Option<fn(item : usize) -> Option<Menu>>,
 }
 
 impl Menu {
     fn new(items: Vec<&str>) -> Menu {
         let mut ret = Menu {menu_items : Vec::new(), has_back : None, has_quit : None, execute : Option::None};
         for i in items {
-            let new_item = MenuItem{name: String::from(i) ,sub_menu: None};
+            let new_item = MenuItem{name: String::from(i)};
             ret.menu_items.push(new_item);
         }
         return ret
@@ -34,17 +33,26 @@ impl Menu {
     }
 
     fn add_option_quit(&mut self) -> &mut Menu{
-        self.menu_items.push(MenuItem{name: String::from("Quit"), sub_menu: None});
+        self.menu_items.push(MenuItem{name: String::from("Quit")});
         self.has_quit = Some(self.menu_items.len()-1);
         return self;
     }
 
-    fn run_option(&self, selection : usize) {
+    fn add_option_back(&mut self) -> &mut Menu{
+        self.menu_items.push(MenuItem{name: String::from("Back")});
+        self.has_back = Some(self.menu_items.len()-1);
+        return self;
+    }
+
+    fn run_option(&self, selection : usize) -> Option<Menu>{
         println!("Exucuting option: {}: {}", selection, self.menu_items[selection].name);
         match self.execute {
-            Some(x) => x(self, selection),
+            Some(fnx) => {
+                return fnx(selection);
+            }
             None => println!("Menu has no function to execute...")
         }
+        return None;
     }
 }
 
@@ -53,16 +61,15 @@ async fn main() {
     
     println!("Human Knowledge Protocol CLI\n");
 
-    let settings_menu = Menu::new(vec!["Author", "Connection"]);
-    //settings_menu.add_option_back()
     let connection_menu = Menu::new(vec!["Select node", "Test Connection"]);
     //connection_menu.add_option_back()
-    let mut menu = Menu::new(vec!["Search", "Write", "Settings"]);
+    let mut main_menu = Menu::new(vec!["Search", "Write", "Settings"]);
     
-    menu.add_option_quit();
-    menu.execute = Some(main_menu_fn);
+    main_menu.add_option_quit();
+    main_menu.execute = Some(main_menu_fn);
     
-    let mut prompt_quit = false;
+    let mut menu = main_menu;
+    let mut prev_menu = None;
 
     loop { 
         let items = menu.as_vecstr();
@@ -72,14 +79,33 @@ async fn main() {
             .interact_on_opt(&Term::stderr())
             .unwrap();
 
+        let mut prompt_quit = false;
+
         match selection {
             Some(index) => {
                 println!("User selected item : {}", items[index]);
-                if index == menu.has_quit.unwrap() {
-                    prompt_quit = true;
-                }                
-                else {
-                    menu.run_option(index);
+                if menu.has_quit.is_some() {
+                    if index == menu.has_quit.unwrap() {
+                        prompt_quit = true;
+                    }
+                }           
+                if menu.has_back.is_some() {
+                    if index == menu.has_back.unwrap() {
+                        if prev_menu.is_some() {
+                            println!("Backing up");
+                            menu = prev_menu.unwrap();
+                            prev_menu = None
+                        }
+                    }
+                }     
+                if !prompt_quit {
+                    match menu.run_option(index) {
+                        Some(x) => {
+                            prev_menu = Some(menu);
+                            menu = x;
+                        }
+                        None => continue,
+                    }
                 }
             }
             None => prompt_quit = true
@@ -89,31 +115,31 @@ async fn main() {
             if Confirm::new().with_prompt("Quit?").interact().unwrap() {
                 break;
             }
-            prompt_quit = false;
         }
 
     }
 
 }
 
-fn main_menu_fn(menu : &Menu, selection : usize) {
+fn main_menu_fn(selection : usize) -> Option<Menu> {
     match selection {
         0 => println!("Search the World!"),
+        2 => {
+            let mut settings_menu = Menu::new(vec!["Author", "Connection"]);
+            settings_menu.execute = Some(settings_menu_fn);
+            settings_menu.add_option_back();
+            return Some(settings_menu);
+        }
         _ => println!("Unimplemented option selected...")
     }
+    return None;
 }
 
-/*async fn settings_menu(selection: Option<usize>, items: Vec<&str>) -> bool {
+fn settings_menu_fn(selection : usize) -> Option<Menu> {
     match selection {
-        Some(index) => {
-            println!("User selected item : {}", items[index]);
-            match index {
-                0 => network::test_connection().await,
-                2 => return true,
-                _ => println!("Unimplemented option selected...")
-                }
-            }
-        None => return false
+        //0 => network::test_connection().await,
+        2 => return None,
+        _ => println!("Unimplemented option selected...")
     }
-    return false
-}*/
+    return None
+}
