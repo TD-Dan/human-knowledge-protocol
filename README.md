@@ -1,5 +1,11 @@
 # Human Knowledge Protocol - HKP
 
+## tl;dr
+
+Decentralized open author wiki system for recording and disseminating human knowledge. Spiced with fact and author credibility scores that can be adjusted according to your world view.
+
+## Rationale
+
 Current world has a an overload of information. Traditional media and social media generate news and information on a rate that nobody is able to process in terms of fact checking and accounting for inherent biases by authors. False news and distortion of facts happens on purpose or by accident and generate huge problems. Universal knowledge protocol aims to generate curated facts by using voting mechanisms and credibility scores. An implementation of this protocol is intended by leveraging decentralised and immutable IOTA ledger. Building on top of IOTA allows for using existing research, such as UIP (Unified Identity Protocol) and MAM (Masked Authenticated Messaging) streams.
 
 ![alt text](https://github.com/kupoli/hkp/blob/master/rough%20ideas/ui%20searchpage.png?raw=true "search ui")
